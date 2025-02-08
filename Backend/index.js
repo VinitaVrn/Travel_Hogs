@@ -14,7 +14,7 @@ app.listen(process.env.PORT,async()=>{
     try{
         await connect(mongodb);
         console.log("database connected")
-        console.log("server started at http://localhost:4000");
+        console.log("server started at http://localhost:2109");
     }catch(err){
       console.log(err)
     }

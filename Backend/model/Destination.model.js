@@ -2,7 +2,7 @@ import {Schema, model} from "mongoose";
 
 const destinationSchema= new Schema({
     destination_img_url:{
-        Type:String
+        type:String
     },
     DestinationName:{
         type:String,
