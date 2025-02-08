@@ -12,9 +12,11 @@ export const getdestination= async (req, res) => {
       const images = response.data.results.map((image) => ({
         url: image.urls.regular,
       }));
-      const data= await destination.findOne({place})
+      
+      const data= await destination.findOne({DestinationName:place})
+      
       const destinationdetails={
-            img_url:data.destination_img_url,
+            img_url:images[0].url,
             Destination:data.DestinationName,
             Description:data.Description,
             Attractions:images,
