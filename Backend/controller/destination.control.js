@@ -28,3 +28,15 @@ export const getdestination= async (req, res) => {
       res.status(500).json({ error: "Failed to fetch images" });
     }
   };
+
+//   export const destnames=async(req,res)=>{
+//     try{
+
+
+//         const destdata=await destination.find();
+//         const data={
+//             img_url:images[0].url,
+//             Destination:data.DestinationName,
+//         }
+//     }
+//   }

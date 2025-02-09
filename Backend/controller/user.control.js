@@ -5,16 +5,16 @@ import dotenv from "dotenv"
 dotenv.config();
 
 export const Register=async(req,res)=>{
-    const {Name,Email,Password}=req.body;
+    const {name,email,password}=req.body;
     try{
-        if(!Name||!Email||!Password){
+        if(!name||!email||!password){
             return res.status(400).json({message:"bad request"})
         }
         const salt_rounds=11;
-        const hashedpass=await  bcrypt.hash(Password,salt_rounds)
+        const hashedpass=await  bcrypt.hash(password,salt_rounds)
         const newuser={
-            Name,
-            Email,
+            Name:name,
+            Email:email,
             Password:hashedpass
         }
         await users.create(newuser);
@@ -27,10 +27,10 @@ export const Register=async(req,res)=>{
 }
 
 export const Login=async (req,res)=>{
-    const {Email,Password}=req.body;
+    const {email,password}=req.body;
     try{
-      const data= await users.findOne({Email});
-      const iscorrectpass= await bcrypt.compare(Password,data.Password)
+      const data= await users.findOne({email});
+      const iscorrectpass= await bcrypt.compare(password,data.Password)
       if(!iscorrectpass){
           return res.status(401).json({message:"user email or password is wrong"})
       }
