@@ -29,7 +29,7 @@ export const Register=async(req,res)=>{
 export const Login=async (req,res)=>{
     const {email,password}=req.body;
     try{
-      const data= await users.findOne({email});
+      const data= await users.findOne({Email:email});
       const iscorrectpass= await bcrypt.compare(password,data.Password)
       if(!iscorrectpass){
           return res.status(401).json({message:"user email or password is wrong"})
@@ -38,7 +38,7 @@ export const Login=async (req,res)=>{
       res.status(200).json({message:"Login success",token:token})
     }
     catch(err){
-      res.status(500).json({message:"Internal server error"})
+      res.status(500).json({message:"Internal server error",error:err.message})
     }
 }
 
