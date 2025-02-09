@@ -9,7 +9,7 @@ export const Authentication=async(req,res,next)=>{
     return res.status(401).json({message:"unauthorized"})
   }
   try{
-    const decoded=await jwt.verify(token,process.env.Secret_Key)
+    const decoded=jwt.verify(token,process.env.Secret_key)
     req.userid=decoded.id;
     next();
   }catch(err){
