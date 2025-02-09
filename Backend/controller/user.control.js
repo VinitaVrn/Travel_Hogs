@@ -34,7 +34,7 @@ export const Login=async (req,res)=>{
       if(!iscorrectpass){
           return res.status(401).json({message:"user email or password is wrong"})
       }
-      const token =jwt.sign({id:data._id,name:data.Name},process.env.Secret_Key)
+      const token =jwt.sign({id:data._id,name:data.Name},process.env.Secret_key)
       res.status(200).json({message:"Login success",token:token})
     }
     catch(err){
