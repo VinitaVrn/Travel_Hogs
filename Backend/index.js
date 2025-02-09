@@ -3,9 +3,11 @@ import {connect} from "mongoose";
 import { destRouter } from "./router/destination.route.js";
 import dotenv from "dotenv"
 import { userRoute } from "./router/user.route.js";
+import cors from "cors"
 dotenv.config();
 const mongodb=process.env.mongodb_url
 const app= express();
+app.use(cors())
 app.use(express.json())
 app.use("/users",userRoute)
 app.use("/destination",destRouter)

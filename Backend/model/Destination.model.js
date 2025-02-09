@@ -15,13 +15,11 @@ const destinationSchema= new Schema({
             address: { type: String }, 
             pricePerNight: { type: Number }, 
             image: { type: String }, 
-            reviews: [
-                {
-                    user: { type: String }, 
-                    rating: { type: Number, min: 1, max: 5 }, 
-                    comment: { type: String } 
-                }
-            ]
+            rating:{
+            type:Number,
+            min:1,
+            max:5
+           }
         }
     ]
 })
