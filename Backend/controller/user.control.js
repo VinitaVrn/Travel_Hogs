@@ -87,7 +87,7 @@ export const get_travel_history=async(req,res)=>{
   
   try{
     const userid=req.userid;
-    const data= await TravelHistory.findOne({userid:userid})
+    const data= await TravelHistory.find({userid:userid})
     console.log(data)
     if(!data){
       return res.status(404).json({message:"user doesnot exists"})
